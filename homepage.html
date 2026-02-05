@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ocean Tree Travels</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-image: url('https://thumbs.dreamstime.com/b/tropical-beach-coconut-tree-scenery-serene-pristine-white-sand-crystal-clear-turquoise-waters-lush-palm-trees-fluffy-417284608.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: rgba(0, 123, 255, 0.85);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        nav h1 {
+            color: white;
+            font-size: 1.8rem;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0f7ff;
+        }
+        .nav-links .user-info {
+            color: #e0f7ff;
+            font-weight: 500;
+        }
+        .nav-links .logout-btn {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        .nav-links .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        .cta-buttons a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .cta-buttons a:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .cta-buttons a.secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        .cta-buttons a.secondary:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 12px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h2, h3 {
+            color: #007BFF;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .destination-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .card-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: #0056b3;
+        }
+        .card-content p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .packages {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .package {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .package h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: rgba(0, 123, 255, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            nav .container { flex-direction: column; gap: 10px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Ocean Tree Travels</h1>
+            <div class="nav-links" id="navLinks">
+                <!-- Filled by JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Dream Vacation Awaits</h2>
+            <p>Explore the World with US</p>
+            <div class="cta-buttons">
+                <a href="sign-reg.html">Start Planning</a>
+                <a href="sign-reg.html" class="secondary" id="exploreBtn">Login to Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <h2>Featured Destinations</h2>
+        <div class="destinations">
+            <div class="destination-card">
+                <img src="https://thumbs.dreamstime.com/b/scenic-view-tropical-beach-clear-turquoise-water-white-sand-under-blue-sky-breathtaking-pristine-gently-lapping-415834848.jpg" alt="Tropical Beach Paradise">
+                <div class="card-content">
+                    <h3>Tropical Island Escape</h3>
+                    <p>White sand beaches, palm trees, and endless turquoise waters — pure relaxation awaits.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://thumbs.dreamstime.com/b/tranquil-lagoon-bora-overwater-bungalows-line-shoreline-crystal-clear-turquoise-water-surrounds-island-green-tropical-359242298.jpg" alt="Bora Bora Lagoon">
+                <div class="card-content">
+                    <h3>Bora Bora Luxury</h3>
+                    <p>Iconic overwater bungalows surrounded by vibrant lagoons and dramatic mountains.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://media.cnn.com/api/v1/images/stellar/prod/220707113925-17-maldives-best-overwater-villas-velaa.jpg?q=w_1110,c_fill" alt="Maldives Overwater Villa">
+                <div class="card-content">
+                    <h3>Maldives Serenity</h3>
+                    <p>Private villas over turquoise seas, perfect sunsets, and ultimate privacy.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://thumbs.dreamstime.com/b/tropical-paradise-hammock-white-sandy-beach-tropical-paradise-hammock-white-sandy-beach-straw-hammock-385120289.jpg" alt="Hammock Beach">
+                <div class="card-content">
+                    <h3>Philippine Paradise</h3>
+                    <p>Hidden beaches, limestone cliffs, and world-class island hopping adventures.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="packages">
+            <h2>Popular Travel Packages</h2>
+            <div class="package-grid">
+                <div class="package">
+                    <h4>Island Hopper – 7 Days</h4>
+                    <p>3 islands • All transfers • Breakfast included • From $1,299</p>
+                </div>
+                <div class="package">
+                    <h4>Overwater Romance – 5 Days</h4>
+                    <p>Luxury villa • Sunset cruise • Spa day • From $2,499</p>
+                </div>
+                <div class="package">
+                    <h4>Beach & Adventure – 10 Days</h4>
+                    <p>Snorkeling • Hiking • Cultural tours • From $1,799</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Ocean Tree Travels. All rights reserved. | Your gateway to paradise.</p>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const navLinks = document.getElementById('navLinks');
+        const exploreBtn = document.getElementById('exploreBtn');
+
+        if (currentUser) {
+            // Logged in state
+            navLinks.innerHTML = `
+                <span class="user-info">Hi, ${currentUser.fullName}</span>
+                <a href="sign-reg.html">Profile</a>
+                <a href="#" class="logout-btn" id="logoutBtn">Logout</a>
+            `;
+            exploreBtn.textContent = "My Account";
+            exploreBtn.href = "sign-reg.html"; // could link to profile later
+
+            // Logout functionality
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('currentUser');
+                alert("You have been logged out.");
+                window.location.reload();
+            });
+        } else {
+            // Logged out state
+            navLinks.innerHTML = `
+                <a href="homepage.html">Home</a>
+                <a href="sign-reg.html">Login</a>
+                <a href="sign-reg.html">Register</a>
+            `;
+            exploreBtn.textContent = "Login to Explore";
+            exploreBtn.href = "sign-reg.html";
+        }
+    </script>
+
+</body>
+</html>
